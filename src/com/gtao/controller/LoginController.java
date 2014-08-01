@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 
 /**
@@ -25,16 +26,17 @@ public class LoginController {
      * @param user
      */
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public String login(@ModelAttribute User user,PrintWriter out){
+    public void login(@ModelAttribute User user,PrintWriter out,HttpServletResponse response){
         boolean flag = service.findUser(user);
         if (flag){
-            return "index";
+            out.print("success");
+            out.flush();
+            out.close();
         }
         else {
             out.print("failed");
             out.flush();
             out.close();
-            return null;
         }
     }
 

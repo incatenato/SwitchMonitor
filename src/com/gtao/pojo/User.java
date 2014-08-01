@@ -1,13 +1,13 @@
 package com.gtao.pojo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by HP on 14-7-23.
  */
-public class User {
-    @Column()
+@Entity
+public class User implements Serializable {
     private int id;
     private String userName;
     private String userPass;
@@ -21,6 +21,17 @@ public class User {
         this.area = area;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Column(name = "userName")
     public String getUserName() {
         return userName;
     }
@@ -29,6 +40,7 @@ public class User {
         this.userName = userName;
     }
 
+    @Column(name = "userPass")
     public String getUserPass() {
         return userPass;
     }
@@ -37,6 +49,7 @@ public class User {
         this.userPass = userPass;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -45,6 +58,7 @@ public class User {
         this.name = name;
     }
 
+    @Column(name = "area")
     public String getArea() {
         return area;
     }

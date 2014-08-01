@@ -21,17 +21,15 @@
     <table class="datatable">
         <tr>
             <th>Firstname</th>  <th>Lastname</th>
-        </tr>
-    <#list model["userList"] as user>
-        <tr>
-            <td>${user.firstName}</td> <td>${user.lastName}</td>
-        </tr>
-    </#list>
+        <#--</tr>-->
+    <#--<#list model["userList"] as user>-->
+        <#--<tr>-->
+            <#--<td>${user.firstName}</td> <td>${user.lastName}</td>-->
+        <#--</tr>-->
+    <#--</#list>-->
     </table>
     <div id="inner"></div>
 
 </div>
 </body>
-<script type="text/javascript" src="../js/jquery-1.8.3.min.js"/>
-<script type="text/javascript" src="../js/test.js"/>
 </html>

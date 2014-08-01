@@ -17,8 +17,8 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
-          <unit-entry name="sessionFactory" value="dataSource" />
+          <unit-entry name="hibernate.cfg.xml" value="122e047b-8bca-49e9-9e4d-2fd10c434354" />
+          <unit-entry name="sessionFactory" value="122e047b-8bca-49e9-9e4d-2fd10c434354" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
@@ -40,6 +40,7 @@
     <orderEntry type="library" name="freemarker" level="project" />
     <orderEntry type="library" name="druid-1.0.2" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.29-bin" level="project" />
+    <orderEntry type="library" scope="TEST" name="aspectjweaver-1.6.9" level="project" />
   </component>
 </module>
 

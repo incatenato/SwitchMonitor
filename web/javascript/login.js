@@ -4,11 +4,13 @@ function loginCheck(){
     if(userid==''||userpass==''){
         return;
     }
-    var type = "login";
-    $.post("/login.action",{userid:userid,userpass:userpass,type:type},function(data){
+    $.post("/login.action",{userName:userid,userPass:userpass},function(data){
         if(data=='failed'){
             $("#err_msg").html("User name/password error.");
             $('.alert-error', $('.login-form')).show();
+        }
+        if(data=='success'){
+            alert('success');
         }
     });
 }
@@ -22,19 +24,13 @@ function SignUp(){
     if(userid==''||userpass==''||rpass==''||username==''||department==''){
         return;
     }
-    var type = "sign";
-    $.post("/loginCheck",{userid:userid,userpass:userpass,username:username,department:department,type:type},function(data){
-        if(data=='id_error'){
-            $("#err_msg2").html("账号重复，请重新输入.");
+    $.post("/loginCheck",{userName:userid,userPass:userpass,name:username,area:department},function(data){
+        if(data=='success'){
+            $("#err_msg2").html("Register success!");
             $('.alert-error', $('.register-form')).show();
         }
-        if(data=='sign_success'){
-            alert('注册成功！');
-            $('.login-form').show();
-            $('.register-form').hide();
-        }
-        if(data=='sign_fail'){
-            $("#err_msg2").html("注册失败，请联系网管中心.");
+        if(data=='failed'){
+            $("#err_msg2").html("This id already exist.");
             $('.alert-error', $('.register-form')).show();
         }
     });

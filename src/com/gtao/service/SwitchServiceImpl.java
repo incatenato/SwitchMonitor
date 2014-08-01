@@ -16,7 +16,8 @@ public class SwitchServiceImpl implements SwitchService{
 
     @Override
     public boolean findUser(User user) {
-        List<User> li = switchDAO.findAll("from User",User.class);
+        List<User> li = switchDAO.nativeFindAll("SELECT * FROM User WHERE userName=? AND userPass=password(?)",
+                User.class,new Object[]{user.getUserName(),user.getUserPass()});
         return li.size() > 0 ? true:false;
     }
 
