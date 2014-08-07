@@ -2,11 +2,14 @@ package com.gtao.controller;
 
 import com.gtao.pojo.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.portlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,7 @@ import java.util.List;
  * Created by HP on 14-7-23.
  */
 @Controller
+@RequestMapping(value = "/test")
 public class TestController {
     /**
      * Static list of users to simulate Database
@@ -34,8 +38,8 @@ public class TestController {
      * @return The index view (FTL)
      */
     @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String index(@ModelAttribute("model") ModelMap model){
-        model.addAttribute("userList", userList);
+    public String index(Model model){
+        model.addAttribute("value", "kkk");
         return "index";
     }
 

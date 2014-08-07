@@ -15,9 +15,7 @@
 
     <display-name>SwitchMonitor</display-name>
     <welcome-file-list>
-        <welcome-file>login.html</welcome-file>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/user/login</welcome-file>
     </welcome-file-list>
 
     <servlet>
@@ -27,6 +25,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.action</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 </web-app>

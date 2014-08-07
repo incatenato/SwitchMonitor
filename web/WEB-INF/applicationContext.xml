@@ -29,6 +29,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.gtao.pojo.User</value>
+                <value>com.gtao.pojo.Device</value>
             </list>
         </property>
     </bean>

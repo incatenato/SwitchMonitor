@@ -6,16 +6,21 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射-->
     <mvc:annotation-driven />
-    <!--FreeMarker 配置-->
-    <bean id="freeMarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <!--ftl模板路径-->
-        <property name="templateLoaderPath" value="/ftl/"/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:view-controller path="/" view-name="login"/>
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="cache" value="true"/>
+        <property name="prefix" value="/view/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="contentType" value="text/html;charset=GBK"/>
     </bean>
 
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="cache" value="true"/>
-        <property name="prefix" value=""/>
-        <property name="suffix" value=".ftl"/>
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error</prop>
+            </props>
+        </property>
     </bean>
     <!--base-package中的值是控制器所在的包-->
     <context:component-scan base-package="com.gtao.controller"/>
