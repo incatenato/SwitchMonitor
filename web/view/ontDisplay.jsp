@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=GBK" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="zh-CN" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="zh-CN" class="ie9 no-js"> <![endif]-->
@@ -6,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="GBK" />
-    <title>Device list</title>
+    <title>Ont config panel</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -47,7 +48,7 @@
     <div class="span12">
         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
         <h3 class="page-title">
-            Device list
+            Pon config
         </h3>
         <ul class="breadcrumb">
             <li>
@@ -55,43 +56,91 @@
                 <a href="/user/index">index</a>
                 <i class="icon-angle-right"></i>
             </li>
-            <li><a href="#">Device list</a></li>
+            <li>
+                <a href="/config/${device.id}/show">control panel</a>
+                <i class="icon-angle-right"></i>
+            </li>
+            <li><a href="#">ont</a></li>
         </ul>
         <!-- END PAGE TITLE & BREADCRUMB-->
     </div>
 </div>
 <!-- END PAGE HEADER-->
 <div id="dashboard">
-<div class="row-fluid">
-    <div class="span12">
-        <div class="portlet box green">
-        <div class="portlet-title">
-            <div class="caption"><i class="icon-reorder"></i>Detail</div>
-            <div class="tools">
-                <a href="javascript:" class="collapse"></a>
-            </div>
-        </div>
-            <div class="portlet-body">
-                <table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="sample_1" aria-describedby="DataTables_Table_0_info" style="width: 100%">
-                    <thead>
-                    <tr role="row">
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">ID</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">IP</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Name</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Address</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Information</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Operation</th>
-                    </tr>
-                    </thead>
-                    <tbody role="alert" aria-live="polite" aria-relevant="all">
+    <div class="row-fluid">
+        <div class="span12">
+            <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="portlet box yellow">
+                <div class="portlet-title">
+                    <div class="caption"><i class="icon-coffee"></i>Ont information</div>
+                </div>
+                <div class="portlet-body">
+                    <table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="ont_tbl" aria-describedby="DataTables_Table_0_info" style="width: 100%">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">ID</th>
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">USER ID</th>
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">MAC ADDRESS</th>
+                            <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Operation</th>
+                        </tr>
+                        </thead>
+                        <tbody role="alert" aria-live="polite" aria-relevant="all">
 
-                    </tbody>
-                </table>
-        </div>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- END BORDERED TABLE PORTLET-->
         </div>
     </div>
-</div>
-<div class="clearfix"></div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption"><i class="icon-reorder"></i>Control form</div>
+                    <div class="tools">
+                        <a href="javascript:" class="collapse"></a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <%--hidden value--%>
+                    <input type="hidden" value="${device.id}" id="did"/>
+                    <!-- BEGIN FORM-->
+                    <form action="#" class="form-horizontal">
+                        <h3 class="form-section">Add ont information.</h3>
+                        <div class="row-fluid">
+                            <div class="span6 ">
+                                <div class="control-group">
+                                    <label class="control-label">* User ID</label>
+                                    <div class="controls">
+                                        <input type="text" name="userId" id="userId" class="m-wrap small">
+                                        <span class="help-inline">Can't be null.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid">
+                            <div class="span6 ">
+                                <div class="control-group">
+                                    <label class="control-label">* Ont MAC address</label>
+                                    <div class="controls">
+                                        <input type="text" name="mac" id="mac" class="m-wrap small">
+                                        <span class="help-inline">Can't be null.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" onclick="ponConfig()" class="btn blue"><i class="icon-ok"></i>OK</button>
+                            <button type="button" class="btn">Back</button>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
 </div>
 </div>
 <!-- END PAGE CONTAINER-->
@@ -109,9 +158,7 @@
 <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 <script src="../../resources/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 <script src="../../resources/js/bootstrap.min.js" type="text/javascript"></script>
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="../../resources/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../../resources/js/DT_bootstrap.js"></script>
+<script src="../../resources/js/jquery.dataTables.min.js" type="text/javascript"/>
 <!--[if lt IE 9]>
 <script src="../../resources/js/excanvas.min.js"></script>
 <script src="../../resources/js/respond.min.js"></script>
@@ -127,14 +174,16 @@
 <script src="../../resources/js/daterangepicker.js" type="text/javascript"></script>
 <script src="../../resources/js/jquery.gritter.js" type="text/javascript"></script>
 <script src="../../resources/js/fullcalendar.min.js" type="text/javascript"></script>
+<script src="../../resources/js/jquery.easy-pie-chart.js" type="text/javascript"></script>
+<script src="../../resources/js/jquery.sparkline.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="../../resources/js/app.js" type="text/javascript"></script>
-<script src="../../resources/javascript/deviceManage.js" type="text/javascript"></script>
+<script src="../../resources/javascript/ont.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
-        App.init(); // initlayout and core plugins
+        App.init(); // init layout and core plugins
     });
 </script>
 <!-- END JAVASCRIPTS -->

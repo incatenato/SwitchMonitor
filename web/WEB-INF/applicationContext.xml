@@ -30,6 +30,10 @@
             <list>
                 <value>com.gtao.pojo.User</value>
                 <value>com.gtao.pojo.Device</value>
+                <value>com.gtao.pojo.Board</value>
+                <value>com.gtao.pojo.Port</value>
+                <value>com.gtao.pojo.Vlan</value>
+                <value>com.gtao.pojo.Telnet</value>
             </list>
         </property>
     </bean>

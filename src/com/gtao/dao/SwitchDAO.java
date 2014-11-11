@@ -10,6 +10,7 @@ public interface SwitchDAO {
     public <T> void delete(T t);
     public <T> void delete(Class<T> entityClass, Integer id);
     public <T> void update(T t);
+    public <T> void saveOrUpdate(T t);
     public <T> T get(Class<T> entityClass, Integer id);
     public <T> List<T> findAll(String hql, Class<T> entityClass);
     public <T> List<T> findAll(String hql, Class<T> entityClass,Object param);

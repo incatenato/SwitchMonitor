@@ -6,7 +6,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="GBK" />
-    <title>Device list</title>
+    <title>Device Monitor</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -35,68 +35,68 @@
 <!-- END HEADER -->
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-<!-- BEGIN SIDEBAR -->
-<%@include file="menu.jsp"%>
-<!-- END SIDEBAR -->
-<!-- BEGIN PAGE -->
-<div class="page-content">
-<!-- BEGIN PAGE CONTAINER-->
-<div class="container-fluid">
-<!-- BEGIN PAGE HEADER-->
-<div class="row-fluid">
-    <div class="span12">
-        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-        <h3 class="page-title">
-            Device list
-        </h3>
-        <ul class="breadcrumb">
-            <li>
-                <i class="icon-home"></i>
-                <a href="/user/index">index</a>
-                <i class="icon-angle-right"></i>
-            </li>
-            <li><a href="#">Device list</a></li>
-        </ul>
-        <!-- END PAGE TITLE & BREADCRUMB-->
-    </div>
-</div>
-<!-- END PAGE HEADER-->
-<div id="dashboard">
-<div class="row-fluid">
-    <div class="span12">
-        <div class="portlet box green">
-        <div class="portlet-title">
-            <div class="caption"><i class="icon-reorder"></i>Detail</div>
-            <div class="tools">
-                <a href="javascript:" class="collapse"></a>
+    <!-- BEGIN SIDEBAR -->
+    <%@include file="menu.jsp"%>
+    <!-- END SIDEBAR -->
+    <!-- BEGIN PAGE -->
+    <div class="page-content">
+        <!-- BEGIN PAGE CONTAINER-->
+        <div class="container-fluid">
+            <!-- BEGIN PAGE HEADER-->
+            <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                    <h3 class="page-title">
+                        Device list
+                    </h3>
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="icon-home"></i>
+                            <a href="/user/index">index</a>
+                            <i class="icon-angle-right"></i>
+                        </li>
+                        <li><a href="#">Device list</a></li>
+                    </ul>
+                    <!-- END PAGE TITLE & BREADCRUMB-->
+                </div>
+            </div>
+            <!-- END PAGE HEADER-->
+            <div id="dashboard">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="portlet box yellow">
+                            <div class="portlet-title">
+                                <div class="caption"><i class="icon-reorder"></i>List</div>
+                                <div class="tools">
+                                    <a href="javascript:" class="collapse"></a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="sample_1" aria-describedby="DataTables_Table_0_info" style="width: 100%">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">ID</th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">IP</th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Name</th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Address</th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Information</th>
+                                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Operation</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody role="alert" aria-live="polite" aria-relevant="all">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
             </div>
         </div>
-            <div class="portlet-body">
-                <table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="sample_1" aria-describedby="DataTables_Table_0_info" style="width: 100%">
-                    <thead>
-                    <tr role="row">
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">ID</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">IP</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Name</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Address</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Information</th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1">Operation</th>
-                    </tr>
-                    </thead>
-                    <tbody role="alert" aria-live="polite" aria-relevant="all">
-
-                    </tbody>
-                </table>
-        </div>
-        </div>
+        <!-- END PAGE CONTAINER-->
     </div>
-</div>
-<div class="clearfix"></div>
-</div>
-</div>
-<!-- END PAGE CONTAINER-->
-</div>
-<!-- END PAGE -->
+    <!-- END PAGE -->
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
@@ -130,7 +130,7 @@
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="../../resources/js/app.js" type="text/javascript"></script>
-<script src="../../resources/javascript/deviceManage.js" type="text/javascript"></script>
+<script src="../../resources/javascript/deviceMonitor.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {

@@ -33,13 +33,6 @@
     </a>
 </li>
 <li class="">
-    <a href="RegistAp.jsp">
-        <i class="icon-edit"></i>
-        <span class="title">Device initial</span>
-        <span></span>
-    </a>
-</li>
-<li class="">
     <a href="/device/show">
         <i class="icon-cogs"></i>
         <span class="title">Device manage</span>
@@ -47,7 +40,7 @@
     </a>
 </li>
 <li class="">
-    <a href="deviceMonitor.jsp">
+    <a href="/device/monitor">
         <i class="icon-facetime-video"></i>
         <span class="title">Device monitor</span>
         <span></span>
@@ -72,6 +65,7 @@
 </div>
 <!--========================JS=============-->
 <script src="../resources/js/jquery-1.8.3.js"></script>
+<script src="../../resources/js/jquery-1.8.3.js"></script>
 <script type="text/javascript">
     $('#menu').find('a').each(function(){
         if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {

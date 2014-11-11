@@ -1,10 +1,11 @@
 package com.gtao.service;
 
 import com.gtao.dao.SwitchDAO;
-import com.gtao.pojo.Device;
-import com.gtao.pojo.User;
+import com.gtao.pojo.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by root on 14-7-31.
@@ -70,6 +71,7 @@ public class SwitchServiceImpl implements SwitchService{
         boolean flag = this.deviceValidate(device);
         if (!flag){
             switchDAO.update(device);
+            //id has no value...todo
             return "success";
         }
         else {
@@ -87,5 +89,90 @@ public class SwitchServiceImpl implements SwitchService{
         else {
             return "failed";
         }
+    }
+
+    @Override
+    public boolean addBoard(Board board) {
+        boolean flag = true;
+        try{
+            switchDAO.save(board);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            flag = true;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean addVlan(Vlan vlan) {
+        boolean flag = true;
+        try{
+            switchDAO.save(vlan);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public List<Vlan> getVlanByDeviceId(int id) {
+        return switchDAO.findAll("from Vlan where DEVICE_ID=?",Vlan.class,id);
+    }
+
+    @Override
+    public void saveOrUpdatePort(Port port) {
+        switchDAO.saveOrUpdate(port);
+    }
+
+    @Override
+    public Vlan getVlanById(int vid) {
+        return switchDAO.get(Vlan.class,vid);
+    }
+
+    @Override
+    public boolean delete(Class t, int id) {
+        boolean flag = true;
+        try{
+            switchDAO.delete(t,id);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean insert(Class t) {
+        boolean flag = true;
+        try{
+            switchDAO.save(t);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean update(Class t) {
+        boolean flag = true;
+        try {
+            switchDAO.update(t);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public Object getById(Class t, int id) {
+        return switchDAO.get(t,id);
     }
 }

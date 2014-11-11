@@ -6,6 +6,11 @@ $(function(){
             window.location.href='/device/'+id+'/edit';
         });
 
+        $('#sample_1').on('click', 'td .green', function() {
+            var id = $(this).closest('tr').find('td:nth-child(1)').html();
+            window.location.href='/config/'+id+'/show ';
+        });
+
         $('#sample_1').on('click', 'td .red', function() {
             var id = $(this).closest('tr').find('td:nth-child(1)').html();
             if(confirm('really?')){
@@ -32,12 +37,12 @@ $(function(){
                 { "mData": "Device IP","sWidth": "15%" },
                 { "mData": "Device name","sWidth": "15%" },
                 { "mData": "Device address","sWidth": "15%" },
-                { "mData": "Device info", "sClass": "center","sWidth": "30%" },
+                { "mData": "Device info", "sClass": "center","sWidth": "22%" },
                 {
                     "mData": null,
                     "sClass": "center",
-                    "sWidth": "17%",
-                    "sDefaultContent": '<a class="btn blue" href="#"><i class="icon-edit icon-white"></i>Edit</a>&nbsp;&nbsp;<a class="btn red" href="#"><i class="icon-edit icon-white"></i>Delete</a>'
+                    "sWidth": "28%",
+                    "sDefaultContent": '<a class="btn blue" href="#"><i class="icon-edit icon-white"></i>Edit</a>&nbsp;&nbsp;<a class="btn green" href="#"><i class="icon-arrow-up icon-white"></i>Config</a>&nbsp;&nbsp;<a class="btn red" href="#"><i class="icon-edit icon-white"></i>Delete</a>'
                 }
             ],
             "bDestroy" : true,

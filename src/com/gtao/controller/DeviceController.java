@@ -40,6 +40,8 @@ public class DeviceController {
         out.print(service.addDevice(device));
         out.flush();
         out.close();
+        //Synchronized info...
+
     }
 
     /**
@@ -49,6 +51,18 @@ public class DeviceController {
     @RequestMapping(value = "show",method = RequestMethod.GET)
     public String show(){
         return "deviceManage";
+    }
+
+    @RequestMapping(value = "monitor",method = RequestMethod.GET)
+    public String monitor(){
+        return "monitor";
+    }
+
+    @RequestMapping(value = "/{id}/monitor",method = RequestMethod.GET)
+    public String forwardMonitor(@PathVariable int id,Model model){
+        Device device = service.getDeviceById(id);
+        model.addAttribute("device",device);
+        return "ViewMonitor";
     }
 
     /**
@@ -97,7 +111,7 @@ public class DeviceController {
     @RequestMapping(value = "/{id}/edit",method = RequestMethod.GET)
     public String editDeviceInfo(@PathVariable int id,Model model){
         Device device = service.getDeviceById(id);
-        model.addAttribute(device);
+        model.addAttribute("device",device);
         return "editDevice";
     }
 
@@ -108,6 +122,7 @@ public class DeviceController {
      */
     @RequestMapping(value = "edit",method = RequestMethod.POST)
     public void editDeviceInfo(@ModelAttribute Device device,PrintWriter out){
+        System.out.println(device.getId());
         out.print(service.updateDeviceInfo(device));
         out.flush();
         out.close();

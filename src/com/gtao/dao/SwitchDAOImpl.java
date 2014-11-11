@@ -41,6 +41,11 @@ public class SwitchDAOImpl implements SwitchDAO {
     }
 
     @Override
+    public <T> void saveOrUpdate(T t) {
+        getSession().saveOrUpdate(t);
+    }
+
+    @Override
     public <T> T get(Class<T> entityClass, Integer id) {
         return (T)getSession().get(entityClass,id);
     }
